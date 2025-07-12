@@ -2,6 +2,8 @@
 
 set -e
 
+# wireguard not included in startup as it should run on a dedicated linux server
+
 docker compose \
   -f compose.portainer.yaml \
   -f compose.npm.yaml \
