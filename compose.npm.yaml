@@ -1,0 +1,47 @@
+services:
+  nginx-proxy-manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: homelab-nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 81:81
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - npm_data:/data
+      - npm_letsencrypt:/etc/letsencrypt
+    networks:
+      - homelab-net
+
+  postgres:
+    image: postgres:latest
+    container_name: homelab-postgres
+    restart: always
+    ports:
+    - 5433:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - homelab-net
+
+volumes: 
+  npm_data:
+  npm_letsencrypt:
+  postgres_data:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
