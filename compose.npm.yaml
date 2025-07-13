@@ -6,7 +6,7 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 81:81
+      - 3000:81
     depends_on:
       postgres:
         condition: service_healthy
