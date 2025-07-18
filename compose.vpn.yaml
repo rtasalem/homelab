@@ -4,7 +4,7 @@ services:
     container_name: homelab-wireguard
     restart: unless-stopped
     ports:
-      - 3002:51820/udp
+      - 3003:51820/udp
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
