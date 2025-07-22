@@ -6,4 +6,4 @@ docker compose \
   -f compose.portainer.yaml \
   -f compose.npm.yaml \
   -f compose.vw.yaml \
-  down
+  down -v
