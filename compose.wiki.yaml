@@ -1,0 +1,14 @@
+services:
+  mediawiki:
+    image: mediawiki:stable
+    container_name: homelab-mediawiki
+    restart: always
+    ports:
+      - 3005:80
+    networks:
+      - homelab-net
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
