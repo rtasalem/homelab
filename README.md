@@ -4,3 +4,7 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 
 ## Services
 
+## Ports
+
+Service | Host Port | Container Port 
+--------|-----------|---------------
