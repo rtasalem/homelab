@@ -1,15 +1,15 @@
 services:
   ntfy:
     image: binwiederhier/ntfy
-    container_name: ntfy
+    container_name: homelab-ntfy
     command:
       - serve
     environment:
       - TZ=UTC 
     user: "1000:1000"
     volumes:
-      - /var/cache/ntfy:/var/cache/ntfy
-      - /etc/ntfy:/etc/ntfy
+      - ntfy-cache:/var/cache/ntfy
+      - ntfy-config:/etc/ntfy
     ports:
       - 8081:80
     healthcheck:
@@ -23,6 +23,10 @@ services:
     networks:
       - homelab-net
       - bin-it
+
+volumes:
+  ntfy-cache:
+  ntfy-config:
 
 networks:
   homelab-net:
