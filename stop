@@ -3,7 +3,8 @@
 set -e
 
 docker compose \
+  -f compose.grafana.yaml \
+  -f compose.ntfy.yaml \
   -f compose.portainer.yaml \
-  -f compose.npm.yaml \
   -f compose.vw.yaml \
   down -v
