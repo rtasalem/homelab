@@ -2,5 +2,4 @@ This wiki is for documenting *every single step* taken in setting up my own home
 
 ## Contents
 [Cloudflare](/docs/cloudflare/README.md)  
-[Docker](./docker/index.md)  
 [Network](./docs/network/README.md)
