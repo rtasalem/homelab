@@ -28,3 +28,5 @@ nmcli connection modify <name> wifi-sec.psk "<password>"
 nmcli connection up <name>
 ```
 Following output should show on successful activation: `Connection successfully activated`.
+
+6. As a final check, run `nmcli device` to check you have connection to the correct `DEVICE`.
