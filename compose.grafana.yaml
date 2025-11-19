@@ -1,0 +1,6 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: homelab-grafana
+    ports:
+      - 3001:3000

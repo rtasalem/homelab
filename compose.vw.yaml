@@ -4,9 +4,9 @@ services:
     container_name: homelab-vaultwarden
     restart: unless-stopped
     ports:
-      - 127.0.0.1:8000:80
-    environment:
-      DOMAIN: ${DOMAIN}
+      - 3004:80
+    # environment:
+    #   DOMAIN: ${VAULT_DOMAIN}
     volumes: 
       - vw_data:/data/
     networks:

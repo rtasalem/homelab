@@ -1,0 +1,7 @@
+services:
+  adminer:
+    image: adminer:latest
+    container_name: homelab-db
+    restart: always
+    ports:
+      - 3006:8080
