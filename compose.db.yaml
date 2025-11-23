@@ -4,4 +4,4 @@ services:
     container_name: homelab-db
     restart: always
     ports:
-      - 3006:8080
+      - 3003:8080
