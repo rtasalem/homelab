@@ -5,7 +5,7 @@ services:
     restart: always
     ports:
       - 8000:8000
-      - 3002:9443
+      - 3000:9000 # http UI (use 9443 for https)
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
