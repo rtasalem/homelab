@@ -13,9 +13,9 @@ show_services() {
   echo "| all       | all       |"
   echo
   echo "Usage examples:"
-  echo "./stop portainer" 
-  echo "./stop portainer grafana" 
-  echo "./stop all" 
+  echo "./stop portainer"
+  echo "./stop portainer grafana"
+  echo "./stop all"
 }
 
 FILES=()
