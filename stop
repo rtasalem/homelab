@@ -52,6 +52,6 @@ if [ ${#FILES[@]} -eq 0 ]; then
 fi
 
 if ! docker compose "${FILES[@]}" down; then
-  echo "Error occurred while bringing up services"
+  echo "Error occurred while closing down services"
   exit 1
 fi
