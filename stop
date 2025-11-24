@@ -3,6 +3,7 @@
 set -e
 
 show_services() {
+  echo
   echo "Available services:"
   echo
   echo "| Service   | Argument  |"
@@ -10,6 +11,11 @@ show_services() {
   echo "| portainer | portainer |"
   echo "| grafana   | grafana   |"
   echo "| all       | all       |"
+  echo
+  echo "Usage examples:"
+  echo "./stop portainer" 
+  echo "./stop portainer grafana" 
+  echo "./stop all" 
 }
 
 FILES=()
