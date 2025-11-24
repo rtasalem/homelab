@@ -6,7 +6,7 @@ services:
     volumes: 
       - ${CLOUDFLARED_PATH}:etc/cloudflared
     command: tunnel run
-    network:
+    networks:
       - homelab-net
 
 networks:
