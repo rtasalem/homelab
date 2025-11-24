@@ -5,3 +5,10 @@ services:
     restart: always
     ports:
       - 3003:8080
+    networks:
+      -  homelab-net
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net

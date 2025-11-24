@@ -1,0 +1,15 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: homelab-cloudflared
+    restart: unless-stopped
+    volumes: 
+      - ./cloudflared:etc/cloudflared
+    command: tunnel run
+    network:
+      - homelab-net
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net

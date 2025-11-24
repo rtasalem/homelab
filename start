@@ -2,9 +2,52 @@
 
 set -e
 
-docker compose \
-  -f compose.grafana.yaml \
-  -f compose.ntfy.yaml \
-  -f compose.portainer.yaml \
-  -f compose.vw.yaml \
-  up -d
+cd "$(dirname "$0")"
+
+show_services() {
+  echo
+  echo "Available services:"
+  echo
+  echo "| Service   | Argument  |"
+  echo "|-----------|-----------|"
+  echo "| portainer | portainer |"
+  echo "| grafana   | grafana   |"
+  echo "| all       | all       |"
+  echo
+  echo "Usage examples:"
+  echo "./start portainer"
+  echo "./start portainer grafana"
+  echo "./start all"
+}
+
+FILES=()
+
+for arg in "$@"; do
+  case "$arg" in
+  portainer)
+    FILES+=("-f" "compose.portainer.yaml")
+    ;;
+  grafana)
+    FILES+=("-f" "compose.grafana.yaml")
+    ;;
+  all)
+    FILES+=("-f" "compose.portainer.yaml" "-f" "compose.grafana.yaml")
+    ;;
+  *)
+    echo "$arg is an unknown service"
+    show_services
+    exit 1
+    ;;
+  esac
+done
+
+if [ ${#FILES[@]} -eq 0 ]; then
+  echo "Error: no services specified"
+  show_services
+  exit 1
+fi
+
+if ! docker compose "${FILES[@]}" up -d; then
+  echo "Error occurred while bringing up services"
+  exit 1
+fi
