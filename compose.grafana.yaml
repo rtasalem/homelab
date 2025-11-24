@@ -4,3 +4,10 @@ services:
     container_name: homelab-grafana
     ports:
       - 3001:3000
+    network:
+    - homelab-net
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net

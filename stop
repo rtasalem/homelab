@@ -2,9 +2,44 @@
 
 set -e
 
-docker compose \
-  -f compose.grafana.yaml \
-  -f compose.ntfy.yaml \
-  -f compose.portainer.yaml \
-  -f compose.vw.yaml \
-  down -v
+show_services() {
+  echo "Available services:"
+  echo
+  echo "| Service   | Argument  |"
+  echo "|-----------|-----------|"
+  echo "| portainer | portainer |"
+  echo "| grafana   | grafana   |"
+  echo "| all       | all       |"
+}
+
+FILES=()
+
+for arg in "$@"; do
+  case "$arg" in
+  portainer)
+    FILES+=("-f" "compose.portainer.yaml")
+    ;;
+  grafana)
+    FILES+=("-f" "compose.grafana.yaml")
+    ;;
+  all)
+    FILES+=("-f" "compose.portainer.yaml" "-f" "compose.grafana.yaml")
+    ;;
+  *)
+    echo "$arg is an unknown service"
+    show_services
+    exit 1
+    ;;
+  esac
+done
+
+if [ ${#FILES[@]} -eq 0 ]; then
+  echo "Error: no services specified"
+  show_services
+  exit 1
+fi
+
+if ! docker compose "${FILES[@]}" down; then
+  echo "Error occurred while closing down services"
+  exit 1
+fi
