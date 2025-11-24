@@ -2,34 +2,40 @@
 
 set -e
 
+cd "$(dirname "$0")"
+
 show_services() {
   echo
   echo "Available services:"
   echo
-  echo "| Service   | Argument  |"
-  echo "|-----------|-----------|"
-  echo "| portainer | portainer |"
-  echo "| grafana   | grafana   |"
-  echo "| all       | all       |"
+  echo "| Service     | Argument  |"
+  echo "|-------------|-----------|"
+  echo "| portainer   | prt       |"
+  echo "| grafana     | gfn       |"
+  echo "| cloudflared | cfd       |"
+  echo "| all         | all       |"
   echo
   echo "Usage examples:"
-  echo "./stop portainer"
-  echo "./stop portainer grafana"
-  echo "./stop all"
+  echo "./start prt"
+  echo "./start prt gfn"
+  echo "./start all"
 }
 
 FILES=()
 
 for arg in "$@"; do
   case "$arg" in
-  portainer)
+  prt)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
-  grafana)
+  gfn)
     FILES+=("-f" "compose.grafana.yaml")
     ;;
+  cfd)
+    FILES+=("-f" "compose.cloudflared.yaml")
+    ;;
   all)
-    FILES+=("-f" "compose.portainer.yaml" "-f" "compose.grafana.yaml")
+    FILES+=("-f" "compose.portainer.yaml" "-f" "compose.grafana.yaml" "-f" "compose.cloudflared.yaml")
     ;;
   *)
     echo "$arg is an unknown service"

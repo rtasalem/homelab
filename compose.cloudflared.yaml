@@ -4,9 +4,9 @@ services:
     container_name: homelab-cloudflared
     restart: unless-stopped
     volumes: 
-      - ./cloudflared:etc/cloudflared
+      - ${CLOUDFLARED_PATH}:etc/cloudflared
     command: tunnel run
-    network:
+    networks:
       - homelab-net
 
 networks:
