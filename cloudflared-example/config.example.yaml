@@ -1,0 +1,6 @@
+tunnel: <tunnel-ID>.json # replace <tunnel-ID> with the UUID (tunnel ID) of the tunnel itself
+credentials-file: /etc/cloudflared/<tunnel-ID>.json # <tunnel-ID> is the same ID referenced on line 1, path is 
+ingress:
+  - hostname: portainer.mydomain.com
+    service: http://portainer:9000 # use the internal container port
+  - service: http_status:404 # catch all

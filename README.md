@@ -9,14 +9,14 @@ To run any of the services listed under this homelab project, [`start`](./start)
 ### Usage
 
 To start or stop all services:
-```
+```bash
 ./start all
 ./stop all
 ```
 
 To start or stop specific services:
 
-```
+```bash
 ./start portainer grafana
 ./stop portainer grafana
 ```

@@ -78,4 +78,24 @@ The path of the `.cloudflared` directory on the server (host machine) should be 
 
 ## Updating the tunnel config
 
-Initially the user learns to run Cloudflare tunnels manually where all references to the Cloudflared directory path and the service refer to what's true for the server. Therefore the configuration must be updated to look for the paths and services that run inside the Docker container. When mounting the `CLOUDFLARED_PATH` as a volume inside the container, the following files should be present: `<tunnel-ID>.json`, `config.yaml`, and `cert.pem`.
+Initially the user learns to run Cloudflare tunnels manually where all references to the Cloudflared directory path and the service refer to what's true for the server. Therefore the configuration must be updated to look for the paths and services that run inside the Docker container. When mounting the `CLOUDFLARED_PATH` as a volume inside the container, the following files should be present: `<tunnel-ID>.json`, `config.yaml`, and `cert.pem`:
+
+- `<tunnel-ID>.json` is the credentials file for the tunnel itself.
+- `config.yaml` contains the configuration for what `hostname` and accompanying `services` are to be exposed to the internet via the tunnel.
+- `cert.pem` is the certificate created after successful authentication for the server's Cloudflared instance, allowing it to manage tunnels.
+
+An example of the `config.yaml` can be found in [`cloudflared-example`](../../cloudflared-example/) directory. The certificate and credentials file are auto-generated when authenticating and creating a tunnel respectively.
+
+## Starting the Cloudflared container
+
+Once the Cloudflared configuration file has been updated to match the same path and ports as what's described in the Docker Compose file, the container can be started:
+
+```bash
+docker compose -f compose.cloudflared.yaml up -d
+```
+
+or using the `start` script provided in this repository:
+
+```bash
+./start cfd
+```

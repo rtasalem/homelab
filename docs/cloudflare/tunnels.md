@@ -6,7 +6,7 @@ Cloudflare tunnels are a free, simple, secure way to expose self-hosted applicat
 
 As the homelab runs on Arch Linux, `cloudflared` must be installed via `yay`:
 
-```
+```bash
 yay -S cloudflared-bin
 ```
 For all prompts concerning diffs or build files, select `a` for `[A]ll` (this will initiate cleaning up of old build files). Run `cloudflared --version` to verify the installation was successful.
@@ -15,7 +15,7 @@ For all prompts concerning diffs or build files, select `a` for `[A]ll` (this wi
 
 The connection to the homelab domain must be authenticated:
 
-```
+```bash
 cloudflared tunnel login
 ```
 
@@ -25,7 +25,7 @@ The browser should automatically open and direct to the Cloudflare authenticatio
 
 Create a tunnel for the chosen domain:
 
-```
+```bash
 cloudflared tunnel create <tunnel-name>
 ```
 
@@ -35,13 +35,13 @@ Successful tunnel creation is confirmed when the terminal output shows the path 
 
 In the same directory as where the `cert.pem` and tunnel credentials file is stored, create the config file:
 
-```
+```bash
 touch config.yaml
 ```
 
 Update the configuration file:
 
-```
+```yaml
 tunnel: <tunnel-ID>
 credentials-file: /path/to/credentials/file/<tunnel-ID>.json
 ingress:
@@ -56,7 +56,7 @@ Example hostname: `portainer.myhomelab.com`
 
 Once all configuration is in place, run the tunnel:
 
-```
+```bash
 cloudflared tunnel run <tunnel-name>
 ```
 
