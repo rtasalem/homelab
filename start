@@ -8,16 +8,15 @@ show_services() {
   echo
   echo "Available services:"
   echo
-  echo "| Service     | Argument  |"
-  echo "|-------------|-----------|"
-  echo "| portainer   | prt       |"
-  echo "| grafana     | gfn       |"
-  echo "| cloudflared | cfd       |"
-  echo "| all         | all       |"
+  echo "| Service/Argument |"
+  echo "|------------------|"
+  echo "| cloudflared      |"
+  echo "| portainer        |"
+  echo "| all              |"
   echo
   echo "Usage examples:"
-  echo "./start prt"
-  echo "./start prt gfn"
+  echo "./start cloudflared"
+  echo "./start cloudflared portainer"
   echo "./start all"
 }
 
@@ -25,17 +24,14 @@ FILES=()
 
 for arg in "$@"; do
   case "$arg" in
-  prt)
-    FILES+=("-f" "compose.portainer.yaml")
-    ;;
-  gfn)
-    FILES+=("-f" "compose.grafana.yaml")
-    ;;
-  cfd)
+  cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
     ;;
+  portainer)
+    FILES+=("-f" "compose.portainer.yaml")
+    ;;
   all)
-    FILES+=("-f" "compose.portainer.yaml" "-f" "compose.grafana.yaml" "-f" "compose.cloudflared.yaml")
+    FILES+=("-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
     ;;
   *)
     echo "$arg is an unknown service"

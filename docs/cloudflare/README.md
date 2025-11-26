@@ -4,6 +4,7 @@ This section of the wiki concerns the use of Cloudflare from transferring domain
 
 ## Contents (A-Z)
 
-[Application Policies](./application-policies.md)  
-[Transfer Domains](./transfer-domains.md)  
+[Application policies](./application-policies.md)  
+[Running Cloudflared as a self-hosted service using Docker](./running-cloudflared.md)  
+[Transfer domains to Cloudflare](./transfer-domains.md)  
 [Tunnels](./tunnels.md)

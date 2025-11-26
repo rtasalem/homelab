@@ -1,4 +1,4 @@
-# Application Policies
+# Application policies
 
 App policies are important for securing self-hosted applications. In doing so this means that after exposing any app via tunnels, restriction to that app is defined, preventing any malicious parties from attempting to gain access.
 

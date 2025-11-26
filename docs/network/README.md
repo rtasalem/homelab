@@ -4,5 +4,5 @@ This section of the wiki concerns my local network, steps I took to make it more
 
 ## Contents (A-Z)
 
-[Create Connection Profile using `nmcli` (NetworkManager)](./create-network-connection-profile.md)  
-[Updating Default Network Credentials](./updating-default-network-credentials.md) 
+[Create connection profile using `nmcli` (NetworkManager)](./create-network-connection-profile.md)  
+[Updating default network credentials](./updating-default-network-credentials.md) 

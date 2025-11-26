@@ -8,15 +8,16 @@ To run any of the services listed under this homelab project, [`start`](./start)
 
 ### Usage
 
-To start or stop all services:
-```
+To start specific services or all services:
+
+```bash
+./start cloudflared portainer
 ./start all
+```
+
+To strop specific services or all services:
+
+```bash
+./stop cloudflared portainer
 ./stop all
-```
-
-To start or stop specific services:
-
-```
-./start portainer grafana
-./stop portainer grafana
 ```
