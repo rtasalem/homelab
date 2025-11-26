@@ -1,4 +1,4 @@
-# Transfer Domains
+# Transferring domains to Cloudflare
 
 These aren't instructions I personally need anymore. But one of the first steps I took before starting my homelab was transferring all of my domains to Cloudflare. This was for a couple reasons:
 1. Price. Cloudflare doesn't upsell domains like other providers and instead sells them at-cost.

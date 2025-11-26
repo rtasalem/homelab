@@ -1,6 +1,6 @@
 # Tunnels
 
-Cloudflare tunnels are a free, simple, secure way to expose self-hosted applications. This guide goes through creating and running tunnels via the `cloudflared` CLI. A separate document exists for adding policies on top of self-hosted applications. This guide is heavily based on the YouTube tutorial, [_Cloudflare Tunnel Setup Guide - Self-hosting for EVERYONE_](https://www.youtube.com/watch?v=hrwoKO7LMzk) created by [Raid Owl](https://www.youtube.com/@RaidOwl).
+Cloudflare tunnels are a free, simple, secure way to expose self-hosted applications. This guide goes through creating and running tunnels via the `cloudflared` (Cloudflare daemon) CLI. A separate document exists for adding policies on top of self-hosted applications. This guide is heavily based on the YouTube tutorial, [_Cloudflare Tunnel Setup Guide - Self-hosting for EVERYONE_](https://www.youtube.com/watch?v=hrwoKO7LMzk) created by [Raid Owl](https://www.youtube.com/@RaidOwl).
 
 ## Install cloudflared
 
@@ -59,3 +59,7 @@ Once all configuration is in place, run the tunnel:
 ```
 cloudflared tunnel run <tunnel-name>
 ```
+
+## Running Cloudflared as a service
+
+While it is entirely possible to run tunnels via `cloudflared tunnel run <tunnel-name>`, this requires the user to manually start up and monitor the tunnel on the server itself. Instead it's better to run Cloudflared as a service. Additionally, it's possible to [self-host Cloudflared using Docker](./running-cloudflared.md).
