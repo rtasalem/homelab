@@ -8,31 +8,34 @@ show_services() {
   echo
   echo "Available services:"
   echo
-  echo "| Service     | Argument  |"
-  echo "|-------------|-----------|"
-  echo "| cloudflared | cfd       |"
-  echo "| portainer   | prt       |"
-  echo "| all         | all       |"
+  echo "| Service/Argument |"
+  echo "|------------------|"
+  echo "| cloudflared      |"
+  echo "| portainer        |"
+  echo "| all              |"
   echo
   echo "Usage examples:"
-  echo "./start cfd"
-  echo "./start cfd prt"
+  echo "./start cloudflared"
+  echo "./start cloudflared portainer"
   echo "./start all"
 }
 
 FILES=()
+REMOVE_VOLUMES=false
 
 for arg in "$@"; do
   case "$arg" in
-  prt)
-    FILES+=("-f" "compose.portainer.yaml")
-    ;;
-  cfd)
+  cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
+    ;;
+  portainer)
+    FILES+=("-f" "compose.portainer.yaml")
     ;;
   all)
     FILES+=("-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
     ;;
+  -v|--volumes)
+    REMOVE_VOLUMES=true
   *)
     echo "$arg is an unknown service"
     show_services
@@ -47,7 +50,11 @@ if [ ${#FILES[@]} -eq 0 ]; then
   exit 1
 fi
 
-if ! docker compose "${FILES[@]}" down; then
-  echo "Error occurred while closing down services"
+if [ "$REMOVE_VOLUMES" = true ]; then
+  DOWN_ARGS+=("-v")
+fi
+
+if ! docker compose "${FILES[@]}" down "${DOWN_ARGS[@]}"; then
+  echo "Error occurred while bringing up services"
   exit 1
 fi
