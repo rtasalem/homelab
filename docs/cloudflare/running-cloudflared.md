@@ -84,7 +84,7 @@ Initially the user learns to run Cloudflare tunnels manually where all reference
 - `config.yaml` contains the configuration for what `hostname` and accompanying `services` are to be exposed to the internet via the tunnel.
 - `cert.pem` is the certificate created after successful authentication for the server's Cloudflared instance, allowing it to manage tunnels.
 
-An example of the `config.yaml` can be found in [`cloudflared-example`](../../cloudflared-example/) directory. The certificate and credentials file are auto-generated when authenticating and creating a tunnel respectively.
+An example of the `config.yaml` can be found in [`cloudflared-example`](../../cloudflared-example/config.example.yaml) directory. The certificate and credentials file are auto-generated when authenticating and creating a tunnel respectively.
 
 ## Starting the Cloudflared container
 

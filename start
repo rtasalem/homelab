@@ -48,6 +48,6 @@ if [ ${#FILES[@]} -eq 0 ]; then
 fi
 
 if ! docker compose "${FILES[@]}" up -d; then
-  echo "Error occurred while bringing up services"
+  echo "Error occurred while starting services"
   exit 1
 fi
