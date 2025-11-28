@@ -8,8 +8,12 @@ services:
     command: tunnel --config /etc/cloudflared/config.yaml run
     networks:
       - homelab-net
+      - bin-it
 
 networks:
   homelab-net:
     driver: bridge
     name: homelab-net
+  bin-it:
+    driver: bridge
+    name: bin-it

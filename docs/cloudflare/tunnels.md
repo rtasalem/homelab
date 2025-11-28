@@ -31,6 +31,18 @@ cloudflared tunnel create <tunnel-name>
 
 Successful tunnel creation is confirmed when the terminal output shows the path to the credentials file for the tunnel itself. Note the name of the credentials file will be the same as the tunnel ID e.g. `<tunnel-ID>.json`. This will likely be stored in the same path as the `cert.pem`.
 
+## Assign CNAME record
+
+A CNAME record must be assigned to start routing traffic to your tunnel subdomain. Note for a single tunnel you can assign as many CNAME records as needed if routing traffic to multiple subdomains.
+
+Start routing traffic:
+
+```bash
+cloudflared tunnel route dns <tunnel ID or name> <hostname>
+```
+
+Example hostname: `portainer.myhomelab.com`
+
 ## Configuration file
 
 In the same directory as where the `cert.pem` and tunnel credentials file is stored, create the config file:
@@ -49,8 +61,6 @@ ingress:
     service: http://localhost:<port>
   - service: http_status:404
 ```
-
-Example hostname: `portainer.myhomelab.com`
 
 ## Run tunnel
 

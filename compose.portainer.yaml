@@ -2,7 +2,7 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     container_name: homelab-portainer
-    restart: always
+    restart: unless-stopped
     ports:
       - 8000:8000
       - 3000:9000 # http UI (use 9443 for https)

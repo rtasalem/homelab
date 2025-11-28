@@ -8,20 +8,19 @@ show_services() {
   echo
   echo "Available services:"
   echo
-  echo "| Service/Argument |"
-  echo "|------------------|"
-  echo "| cloudflared      |"
-  echo "| portainer        |"
-  echo "| all              |"
+  echo "cloudflared"
+  echo "portainer"
+  echo "all"
   echo
   echo "Usage examples:"
-  echo "./start cloudflared"
-  echo "./start cloudflared portainer"
-  echo "./start all"
+  echo "./stop cloudflared"
+  echo "./stop cloudflared portainer"
+  echo "./stop all"
 }
 
 FILES=()
 REMOVE_VOLUMES=false
+DOWN_ARGS=()
 
 for arg in "$@"; do
   case "$arg" in
@@ -36,6 +35,7 @@ for arg in "$@"; do
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
+    ;;
   *)
     echo "$arg is an unknown service"
     show_services
@@ -55,6 +55,6 @@ if [ "$REMOVE_VOLUMES" = true ]; then
 fi
 
 if ! docker compose "${FILES[@]}" down "${DOWN_ARGS[@]}"; then
-  echo "Error occurred while bringing up services"
+  echo "Error occurred while stopping services"
   exit 1
 fi
