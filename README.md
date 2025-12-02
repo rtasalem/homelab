@@ -21,6 +21,8 @@ To start specific services or all services:
 ./start all
 ```
 
+> Note: Services will start in `detached` (`-d`) mode as monitoring can be done via available services including Portainer or Grafana.
+
 To strop specific services or all services:
 
 ```bash

@@ -7,8 +7,12 @@ services:
       - 3001:3000
     networks:
     - homelab-net
+    - bin-it
 
 networks:
   homelab-net:
     driver: bridge
     name: homelab-net
+  bin-it:
+    driver: bridge
+    name: bin-it
