@@ -9,6 +9,7 @@ show_services() {
   echo "Available services:"
   echo
   echo "cloudflared"
+  echo "grafana"
   echo "portainer"
   echo "all"
   echo
@@ -27,11 +28,18 @@ for arg in "$@"; do
   cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
     ;;
+  grafana)
+    FILES+=("-f" "compose.grafana.yaml")
+    ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
+    FILES+=(
+      "-f" "compose.cloudflared.yaml" 
+      "-f" "compose.grafana.yaml"
+      "-f" "compose.portainer.yaml"
+      )
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
