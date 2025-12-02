@@ -8,6 +8,12 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 [Docker](/docs/docker/README.md)  
 [Network](./docs/network/README.md)
 
+## Available services (A-Z)
+
+[Bin It!](./compose.bin-it.yaml) - Custom Python application I built to automate email reminders for my bin collection days.  
+[Cloudflared](./compose.cloudflared.yaml) - A.k.a. the Cloudflare daemon to support the use of Cloudflare tunnels.  
+[Portainer](./compose.portainer.yaml) - GUI for managing container environments, specifically Docker containers.  
+
 ## Scripts
 
 To run any of the services listed under this homelab project, [`start`](./start) and [`stop`](./stop) scripts have been configured to start either all or specified services.
