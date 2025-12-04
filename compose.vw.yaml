@@ -5,8 +5,6 @@ services:
     restart: unless-stopped
     ports:
       - 3004:80
-    # environment:
-    #   DOMAIN: ${VAULT_DOMAIN}
     volumes: 
       - vw_data:/data/
     networks:
