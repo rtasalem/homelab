@@ -8,7 +8,6 @@ show_services() {
   echo
   echo "Available services:"
   echo
-  echo "bin-it"
   echo "cloudflared"
   echo "grafana"
   echo "portainer"
@@ -26,9 +25,6 @@ DOWN_ARGS=()
 
 for arg in "$@"; do
   case "$arg" in
-  bin-it)
-    FILES+=("-f" "compose.bin-it.yaml")
-    ;;
   cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
     ;;
@@ -40,7 +36,6 @@ for arg in "$@"; do
     ;;
   all)
     FILES+=(
-      "-f" "compose.bin-it.yaml" 
       "-f" "compose.cloudflared.yaml" 
       "-f" "compose.grafana.yaml"
       "-f" "compose.portainer.yaml"
