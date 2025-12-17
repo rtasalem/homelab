@@ -10,7 +10,7 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 
 ## Available services (A-Z)
 
-[Bin It!](./compose.bin-it.yaml) - Custom Python application I built to automate email reminders for my bin collection days.  
+[Bin It!](https://github.com/rtasalem/bin-it) - Custom Python application I built to automate email reminders for my bin collection days.  
 [Cloudflared](./compose.cloudflared.yaml) - A.k.a. the Cloudflare daemon to support the use of Cloudflare tunnels.  
 [Portainer](./compose.portainer.yaml) - GUI for managing container environments, specifically Docker containers.  
 
