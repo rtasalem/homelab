@@ -14,6 +14,10 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 [Cloudflared](./compose.cloudflared.yaml) - A.k.a. the Cloudflare daemon to support the use of Cloudflare tunnels.  
 [Portainer](./compose.portainer.yaml) - GUI for managing container environments, specifically Docker containers.  
 
+## Environment variables
+
+Please use the [`.env.example`](./.env.example) file as a reference for what variables need to be present in the `.env` file (which should be located at the root of the project). 
+
 ## Scripts
 
 To run any of the services listed under this homelab project, [`start`](./start) and [`stop`](./stop) scripts have been configured to start either all or specified services.
