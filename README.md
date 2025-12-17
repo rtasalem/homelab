@@ -8,6 +8,16 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 [Docker](/docs/docker/README.md)  
 [Network](./docs/network/README.md)
 
+## Available services (A-Z)
+
+[Bin It!](https://github.com/rtasalem/bin-it) - Custom Python application I built to automate email reminders for my bin collection days.  
+[Cloudflared](./compose.cloudflared.yaml) - A.k.a. the Cloudflare daemon to support the use of Cloudflare tunnels.  
+[Portainer](./compose.portainer.yaml) - GUI for managing container environments, specifically Docker containers.  
+
+## Environment variables
+
+Please use the [`.env.example`](./.env.example) file as a reference for what variables need to be present in the `.env` file (which should be located at the root of the project). 
+
 ## Scripts
 
 To run any of the services listed under this homelab project, [`start`](./start) and [`stop`](./stop) scripts have been configured to start either all or specified services.
@@ -20,6 +30,8 @@ To start specific services or all services:
 ./start cloudflared portainer
 ./start all
 ```
+
+> Note: Services will start in `detached` (`-d`) mode as monitoring can be done via available services including Portainer or Grafana.
 
 To strop specific services or all services:
 

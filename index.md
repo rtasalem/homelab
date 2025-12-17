@@ -6,23 +6,12 @@ This wiki is for documenting *every single step* taken in setting up my own home
 [Docker](/docs/docker/README.md)  
 [Network](./docs/network/README.md)
 
-## Scripts
+## Available services (A-Z)
 
-To run any of the services listed under this homelab project, [`start`](./start) and [`stop`](./stop) scripts have been configured to start either all or specified services.
+[Bin It!](https://github.com/rtasalem/bin-it) - Custom Python application I built to automate email reminders for my bin collection days.  
+[Cloudflared](./compose.cloudflared.yaml) - A.k.a. the Cloudflare daemon to support the use of Cloudflare tunnels.  
+[Portainer](./compose.portainer.yaml) - GUI for managing container environments, specifically Docker containers.  
 
-### Usage
+## Running the homelab
 
-To start specific services or all services:
-
-```bash
-./start cloudflared portainer
-./start all
-```
-
-To strop specific services or all services:
-
-```bash
-./stop cloudflared portainer
-./stop portainer -v
-./stop all
-```
+Please refer to the project's [`README`](./README.md) for full details on how to run this homelab.
