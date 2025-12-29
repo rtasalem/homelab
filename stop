@@ -8,6 +8,7 @@ show_services() {
   echo
   echo "Available services:"
   echo
+  echo "bin-it"
   echo "cloudflared"
   echo "portainer"
   echo "all"
@@ -24,6 +25,9 @@ DOWN_ARGS=()
 
 for arg in "$@"; do
   case "$arg" in
+  bin-it)
+    FILES+=("-f" "compose.bin-it.yaml")
+    ;;
   cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
     ;;
@@ -31,7 +35,7 @@ for arg in "$@"; do
     FILES+=("-f" "compose.portainer.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
