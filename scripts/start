@@ -2,7 +2,9 @@
 
 set -e
 
-cd "$(dirname "$0")"
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+cd "${projectRoot}"
 
 show_services() {
   echo
