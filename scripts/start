@@ -16,9 +16,9 @@ show_services() {
   echo "all"
   echo
   echo "Usage examples:"
-  echo "./start cloudflared"
-  echo "./start cloudflared portainer"
-  echo "./start all"
+  echo "./scripts/start cloudflared"
+  echo "./scripts/start cloudflared portainer"
+  echo "./scripts/start all"
 }
 
 FILES=()

@@ -16,9 +16,9 @@ show_services() {
   echo "all"
   echo
   echo "Usage examples:"
-  echo "./stop cloudflared"
-  echo "./stop cloudflared portainer"
-  echo "./stop all"
+  echo "./scripts/stop cloudflared"
+  echo "./scripts/stop cloudflared portainer"
+  echo "./scripts/stop all"
 }
 
 FILES=()
