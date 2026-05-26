@@ -10,6 +10,7 @@ show_services() {
   echo
   echo "bin-it"
   echo "cloudflared"
+  echo "navidrome"
   echo "portainer"
   echo "all"
   echo
@@ -29,11 +30,14 @@ for arg in "$@"; do
   cloudflared)
     FILES+=("-f" "compose.cloudflared.yaml")
     ;;
+  navidrome)
+    FILES+=("-f" "compose.navidrome.yaml")
+    ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.portainer.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.portainer.yaml")
     ;;
   *)
     echo "$arg is an unknown service"

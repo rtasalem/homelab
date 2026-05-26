@@ -4,6 +4,7 @@ This wiki is for documenting *every single step* taken in setting up my own home
 
 [Cloudflare](/docs/cloudflare/README.md)  
 [Docker](/docs/docker/README.md)  
+[Navidrome](/docs/navidrome/README.md)  
 [Network](./docs/network/README.md)
 
 ## Scripts

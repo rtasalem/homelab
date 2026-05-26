@@ -1,2 +1,7 @@
+# general
 .env
 .DS_STORE
+
+# navidrome
+music/
+data/
