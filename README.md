@@ -6,6 +6,7 @@ This [wiki](https://homelab.ranasalem.io) is for documenting *every single step*
 
 [Cloudflare](/docs/cloudflare/README.md)  
 [Docker](/docs/docker/README.md)  
+[Navidrome](/docs/navidrome/README.md)  
 [Network](./docs/network/README.md)
 
 ## Scripts

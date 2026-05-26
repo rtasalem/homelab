@@ -16,6 +16,3 @@ networks:
   homelab-net:
     driver: bridge
     name: homelab-net
-
-    
-
