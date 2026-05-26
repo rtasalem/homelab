@@ -1,14 +1,21 @@
 services:
   navidrome:
     image: deluan/navidrome:latest
+    container_name: homelab-navidrome
     user: 1000:1000 # should be owner of volumes
     ports:
       - "4533:4533"
     restart: unless-stopped
-    environment:
-      # Optional: put your config options customization here. Examples:
-      # ND_LOGLEVEL: debug
     volumes:
-      - "/path/to/data:/data"
-      - "/path/to/your/music/folder:/music:ro"
+      - "/home/rana/projects/homelab/data:/data"
+      - "/home/rana/projects/homelab/music:/music:ro"
+    networks:
+      - homelab-net
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
+
+    
 
