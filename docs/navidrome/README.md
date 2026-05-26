@@ -6,4 +6,3 @@ Guidance on setting up a free, open source music server and streaming platform u
 
 [Streaming music on iOS](./streaming-music-on-ios.md)  
 [Tag editor](./mp3-tag-editor.md)
-
