@@ -36,8 +36,11 @@ for arg in "$@"; do
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
+  vaultwarden)
+    FILES+=("-f" "compose.vw.yaml")
+    ;;
   all)
-    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.portainer.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vw.yaml")
     ;;
   *)
     echo "$arg is an unknown service"
