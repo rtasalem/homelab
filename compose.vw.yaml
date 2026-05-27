@@ -1,0 +1,21 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: homelab-vaultwarden
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8000:80
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes: 
+      - vw_data:/data/
+    networks:
+      - homelab-net
+
+volumes:
+  vw_data:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
