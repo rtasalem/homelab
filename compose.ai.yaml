@@ -1,0 +1,43 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - homelab-net
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:v0.9.5
+    container_name: open-webui
+    depends_on:
+      - ollama
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=some-random-string
+      - WEBUI_NAME=Rana's Homelab
+      - WEBUI_HOST=0.0.0.0
+      - CORS_ALLOW_ORIGIN=*
+      - RAG_EMBEDDING_MODEL=""
+      - ENABLE_RAG_WEB_SEARCH=false
+    volumes:
+      - open-webui:/app/backend/data
+    restart: unless-stopped
+    healthcheck:
+      disable: true
+    networks:
+      - homelab-net
+
+volumes:
+  ollama:
+  open-webui:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
