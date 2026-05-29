@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+echo "Available services     Description"
+echo "bin-it                 Custom Python app which sends automated email alerts a day in advance of any bin collections"
+echo "cloudflared            Cloudflare daemon to support use of Cloudflared tunnnels"
+echo "navidrome              Music server and streaming platform (alternative to paid services like Spotify or Apple Music)"
+echo "portainer              Docker container management of all self-hosted apps"
+echo "vaultwarden            Password manager"

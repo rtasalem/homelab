@@ -20,10 +20,16 @@ To start specific services or all services:
 ./start all
 ```
 
-To strop specific services or all services:
+To stop specific services or all services:
 
 ```bash
 ./stop cloudflared portainer
 ./stop portainer -v
 ./stop all
+```
+
+To see a list of all available services:
+
+```
+./help
 ```
