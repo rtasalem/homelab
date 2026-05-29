@@ -35,6 +35,9 @@ for arg in "$@"; do
   navidrome)
     FILES+=("-f" "compose.navidrome.yaml")
     ;;
+  ollama)
+    FILES+=("-f" "compose.ai.yaml")
+    ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
