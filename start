@@ -18,9 +18,11 @@ show_services() {
   echo "./start cloudflared"
   echo "./start cloudflared portainer"
   echo "./start all"
+  echo "./start all --ai    (includes Ollama)"
 }
 
 FILES=()
+AI=false
 
 for arg in "$@"; do
   case "$arg" in
@@ -33,6 +35,9 @@ for arg in "$@"; do
   navidrome)
     FILES+=("-f" "compose.navidrome.yaml")
     ;;
+  ollama)
+    FILES+=("-f" "compose.ai.yaml")
+    ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
@@ -42,6 +47,9 @@ for arg in "$@"; do
   all)
     FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vw.yaml")
     ;;
+  --ai)
+    AI=true
+    ;;
   *)
     echo "$arg is an unknown service"
     show_services
@@ -49,6 +57,10 @@ for arg in "$@"; do
     ;;
   esac
 done
+
+if [ "$AI" = true ]; then
+  FILES+=("-f" "compose.ai.yaml")
+fi
 
 if [ ${#FILES[@]} -eq 0 ]; then
   echo "Error: no services specified"

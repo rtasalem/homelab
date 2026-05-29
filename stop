@@ -35,6 +35,9 @@ for arg in "$@"; do
   navidrome)
     FILES+=("-f" "compose.navidrome.yaml")
     ;;
+  ollama)
+    FILES+=("-f" "compose.ai.yaml")
+    ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
@@ -42,7 +45,7 @@ for arg in "$@"; do
     FILES+=("-f" "compose.vw.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vw.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.ai.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vw.yaml")
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
