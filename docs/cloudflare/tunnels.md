@@ -31,6 +31,8 @@ cloudflared tunnel create <tunnel-name>
 
 Successful tunnel creation is confirmed when the terminal output shows the path to the credentials file for the tunnel itself. Note the name of the credentials file will be the same as the tunnel ID e.g. `<tunnel-ID>.json`. This will likely be stored in the same path as the `cert.pem`.
 
+Creating a tunnel only needs to be completed _once_.
+
 ## Assign CNAME record
 
 A CNAME record must be assigned to start routing traffic to your tunnel subdomain. Note for a single tunnel you can assign as many CNAME records as needed if routing traffic to multiple subdomains.
@@ -58,9 +60,20 @@ tunnel: <tunnel-ID>
 credentials-file: /path/to/credentials/file/<tunnel-ID>.json
 ingress:
   - hostname: <app-name>.<domain>.com
-    service: http://localhost:<port>
+    service: http://<service-name>:<port>
   - service: http_status:404
 ```
+
+The `<service-name>` should be replaced with the name of the service as it's shown in its respective Docker Compose file e.g.:
+
+```
+service:
+  portainer: # this is the service name
+```
+
+## Docker network
+
+To ensure the Docker container is routed through the tunnel successfully, ensure the service you wish to expose exists on the same network as the `cloudflared` service.
 
 ## Run tunnel
 
@@ -69,6 +82,8 @@ Once all configuration is in place, run the tunnel:
 ```bash
 cloudflared tunnel run <tunnel-name>
 ```
+
+Again, running a tunnel only needs to be completed once.
 
 ## Running Cloudflared as a service
 
