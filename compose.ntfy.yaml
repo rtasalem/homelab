@@ -12,7 +12,14 @@ services:
     volumes:
       - ntfy-cache:/var/cache/ntfy
       - ntfy-config:/etc/ntfy
+    networks:
+      - homelab-net
 
 volumes:
   ntfy-cache:
   ntfy-config:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
