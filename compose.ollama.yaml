@@ -1,18 +1,19 @@
 services:
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama
+    container_name: homelab-ollama
+    restart: unless-stopped
     ports:
       - "11434:11434"
     volumes:
       - ollama:/root/.ollama
-    restart: unless-stopped
     networks:
       - homelab-net
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:v0.9.5
-    container_name: open-webui
+    container_name: homelab-open-webui
+    restart: unless-stopped
     depends_on:
       - ollama
     ports:
@@ -25,11 +26,10 @@ services:
       - CORS_ALLOW_ORIGIN=*
       - RAG_EMBEDDING_MODEL=""
       - ENABLE_RAG_WEB_SEARCH=false
-    volumes:
-      - open-webui:/app/backend/data
-    restart: unless-stopped
     healthcheck:
       disable: true
+    volumes:
+      - open-webui:/app/backend/data
     networks:
       - homelab-net
 
