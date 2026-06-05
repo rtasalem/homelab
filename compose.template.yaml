@@ -1,0 +1,22 @@
+# this is a template Docker Compose file to use as reference when adding new services to the homelab
+services:
+  image: template/image:version # replace with real image to pull from
+  container_name: homelab-template # change to desired name using homelab- as the prefix to align with established convention
+  restart: unless-stopped # this is the default value I use, but change to whatever is most suitable
+  ports:
+    - 3000:3000 # host:container ports (only ever change the host port if needed)
+  environment:
+    NOT_A_REAL_ENV_VAR: ${NOT_A_REAL_ENV_VAR:-not-a-real-env-var} # sensitive values should be stored in the .env file, non-sensitive defaults should be provided in the Docker Compose config
+  volumes:
+    - fake_volume:/fake-volume/
+  networks:
+    homelab-net # default network that all homelab services should exist on, add additional networks if needed
+
+volumes:
+  fake_volume:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
+
