@@ -4,7 +4,7 @@ services:
     container_name: homelab-navidrome
     restart: unless-stopped
     ports:
-      - "3005:4533"
+      - "3004:4533"
     user: 1000:1000 # should be owner of volumes
     volumes:
       - "/home/rana/projects/homelab/data:/data"

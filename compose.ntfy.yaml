@@ -6,7 +6,7 @@ services:
     command:
       - serve
     ports:
-      - 80:80
+      - 3005:80
     environment:
       - TZ=UTC
     volumes:
