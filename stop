@@ -11,12 +11,15 @@ show_services() {
   echo "bin-it"
   echo "cloudflared"
   echo "navidrome"
+  echo "ntfy"
   echo "portainer"
+  echo "ollama"
+  echo "vaultwarden"
   echo "all"
-  echo
+
   echo "Usage examples:"
   echo "./stop cloudflared"
-  echo "./stop cloudflared portainer"
+  echo "./stop cloudflared portainer -v"
   echo "./stop all"
 }
 
@@ -35,17 +38,20 @@ for arg in "$@"; do
   navidrome)
     FILES+=("-f" "compose.navidrome.yaml")
     ;;
+  ntfy)
+    FILES+=("-f" "compose.ntfy.yaml")
+    ;;
   ollama)
-    FILES+=("-f" "compose.ai.yaml")
+    FILES+=("-f" "compose.ollama.yaml")
     ;;
   portainer)
     FILES+=("-f" "compose.portainer.yaml")
     ;;
   vaultwarden)
-    FILES+=("-f" "compose.vw.yaml")
+    FILES+=("-f" "compose.vaultwarden.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.ai.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vw.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.ntfy.yaml" "-f" "compose.ollama.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vaultwarden.yaml")
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
