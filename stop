@@ -11,12 +11,15 @@ show_services() {
   echo "bin-it"
   echo "cloudflared"
   echo "navidrome"
+  echo "ntfy"
   echo "portainer"
+  echo "ollama"
+  echo "vaultwarden"
   echo "all"
-  echo
+
   echo "Usage examples:"
   echo "./stop cloudflared"
-  echo "./stop cloudflared portainer"
+  echo "./stop cloudflared portainer -v"
   echo "./stop all"
 }
 
