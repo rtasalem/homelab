@@ -2,6 +2,8 @@ services:
   bin-it:
     image: ranasalem13/bin-it:latest
     container_name: bin-it
+    ports:
+      - '3002:8080'
     environment:
       PYTHONUNBUFFERED: 1
       UPRN: ${UPRN}
@@ -14,8 +16,6 @@ services:
     depends_on:
       mongodb:
         condition: service_started
-    ports:
-      - '3003:8080'
     networks:
       - bin-it
 
@@ -40,7 +40,7 @@ services:
       mongodb:
         condition: service_started
     ports:
-      - '3004:8081'
+      - '3003:8081'
     networks:
       - bin-it
 

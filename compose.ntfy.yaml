@@ -1,0 +1,18 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: homelab-ntfy
+    restart: unless-stopped
+    command:
+      - serve
+    ports:
+      - 3005:80
+    environment:
+      - TZ=UTC
+    volumes:
+      - ntfy-cache:/var/cache/ntfy
+      - ntfy-config:/etc/ntfy
+
+volumes:
+  ntfy-cache:
+  ntfy-config:
