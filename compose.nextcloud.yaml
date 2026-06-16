@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mariadb:11
+    container_name: homelab-nextcloud-db
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - nextcloud_db:/var/lib/mysql
+    networks:
+      -  homelab-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: homelab-nextcloud-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - nextcloud_redis:/data
+    networks:
+      -  homelab-net
+
+  nextcloud:
+    image: nextcloud:apache
+    container_name: homelab-nextcloud
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+      - redis
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST:-db}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      REDIS_HOST: ${REDIS_HOST:-redis}
+      NEXTCLOUD_ADMIN_USER: ${NEXTCLOUD_ADMIN_USER}
+      NEXTCLOUD_ADMIN_PASSWORD: ${NEXTCLOUD_ADMIN_PASSWORD}
+      NEXTCLOUD_TRUSTED_DOMAINS: localhost 127.0.0.1
+      OVERWRITEPROTOCOL: http
+    volumes:
+      - nextcloud_html:/var/www/html
+      - nextcloud_data:/var/www/html/data
+    networks:
+      -  homelab-net
+
+volumes:
+  nextcloud_db:
+  nextcloud_redis:
+  nextcloud_html:
+  nextcloud_data:
+
+networks:
+  homelab-net:
+    driver: bridge
+    name: homelab-net
