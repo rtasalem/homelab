@@ -8,7 +8,9 @@ services:
     ports:
       - 3005:80
     environment:
-      - TZ=UTC
+      TZ: UTC
+      NTFY_BASE_URL: ${NTFY_BASE_URL}
+      NTFY_UPSTREAM_BASE_URL: https://ntfy.sh
     volumes:
       - ntfy-cache:/var/cache/ntfy
       - ntfy-config:/etc/ntfy
