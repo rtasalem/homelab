@@ -11,6 +11,7 @@ show_services() {
   echo "bin-it"
   echo "cloudflared"
   echo "navidrome"
+  echo "nextcloud"
   echo "ntfy"
   echo "portainer"
   echo "ollama"
@@ -38,6 +39,9 @@ for arg in "$@"; do
   navidrome)
     FILES+=("-f" "compose.navidrome.yaml")
     ;;
+  nextcloud)
+    FILES+=("-f" "compose.nextcloud.yaml")
+    ;;
   ntfy)
     FILES+=("-f" "compose.ntfy.yaml")
     ;;
@@ -51,7 +55,7 @@ for arg in "$@"; do
     FILES+=("-f" "compose.vaultwarden.yaml")
     ;;
   all)
-    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.ntfy.yaml" "-f" "compose.ollama.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vaultwarden.yaml")
+    FILES+=("-f" "compose.bin-it.yaml" "-f" "compose.cloudflared.yaml" "-f" "compose.navidrome.yaml" "-f" "compose.nextcloud.yaml" "-f" "compose.ntfy.yaml" "-f" "compose.ollama.yaml" "-f" "compose.portainer.yaml" "-f" "compose.vaultwarden.yaml")
     ;;
   -v|--volumes)
     REMOVE_VOLUMES=true
